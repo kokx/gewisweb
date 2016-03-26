@@ -24,7 +24,7 @@
         ; ?>
 
     </head>
-    <body>
+    <body background="<?= $this->basePath() ?>/img/fancybg.gif">
 
     <table border="0">
         <tr>
@@ -42,10 +42,10 @@
             </td>
         </tr>
         <tr>
-            <td valign=top width="18%">
+            <td valign=top width="200">
                 <?= $this->partial('partial/fancy-nav.phtml') ?>
             </td>
-            <td width="78%" valign=top>
+            <td valign=top>
                 <div class="content-container">
                     <?php $viewModel = current($this->viewModel()->getCurrent()->getChildren());
                         if(strstr($viewModel->getTemplate(), 'admin')) {
