@@ -1,15 +1,19 @@
 <?php
 $lang = $this->plugin('translate')->getTranslator()->getLocale();
 ?>
-    <ul class="nav nav-pills nav-stacked nav-fancy">
-        <li>
+
+<table style="border-collapse: separate; border-spacing: 5px">
+    <tr>
+        <td style="border: 1px solid black; padding: 4px; background-color: rgb(255,255,204);">
             <a href="<?= $this->url('home') ?>">
                 HomePage
             </a>
-        </li>
+        </td>
+    </tr>
 
-        <!-- standaard shizzle -->
-            <li class="dropdown dropdown-hover <?= $this->moduleIsActive(['frontpage', 'page']) ? 'active default' : '' ?>">
+    <tr>
+        <td style="border: 1px solid black; padding: 4px; background-color: rgb(255,255,204);">
+            <div class="dropdown dropdown-hover">
                 <a href="<?= $this->url('home/page', ['category' => 'vereniging']) ?>" role="button" aria-haspopup="true" aria-expanded="false">
                     <?= $this->translate('Association') ?>
                 </a>
@@ -22,7 +26,13 @@ $lang = $this->plugin('translate')->getTranslator()->getLocale();
                     <li><a href="<?= $this->url('home/page', ['category' => 'vereniging', 'sub_category' => 'statuten']) ?>"><?= $this->translate('Regulations') ?></a></li>
                     <li><a href="<?= $this->url('home/page', ['category' => 'vereniging', 'sub_category' => 'contact']) ?>"><?= $this->translate('Contact') ?></a></li>
                 </ul>
-            </li>
+            </div>
+        </td>
+    </tr>
+</table>
+
+    <ul class="nav nav-pills nav-stacked nav-fancy">
+        <!-- standaard shizzle -->
             <li class="dropdown dropdown-hover <?= $this->moduleIsActive(['company']) ? 'active default' : '' ?>">
                 <a href="<?= $this->url('company') ?>" role="button" aria-haspopup="true" aria-expanded="false">
                     <?= $this->translate('Companies') ?>
