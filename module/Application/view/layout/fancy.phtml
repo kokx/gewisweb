@@ -29,9 +29,9 @@
     <table border="0">
         <tr>
             <td>
-            <a href="<?= $this->url('home') ?>">
-                <img src="<?= $this->basePath() ?>/img/anilogo.gif" alt="<?= $this->translate('GEWIS Logo') ?>">
-            </a>
+                <a href="<?= $this->url('home') ?>">
+                    <img src="<?= $this->basePath() ?>/img/anilogo.gif" alt="<?= $this->translate('GEWIS Logo') ?>">
+                </a>
             </td>
             <td>
 <center>
@@ -40,12 +40,18 @@
     <font size="+5" color="#FF0000">GEWIS</font>
 </center>
             </td>
+            <td width="200">
+                <a href="<?= $this->url('home') ?>">
+                    <img src="<?= $this->basePath() ?>/img/anilogo.gif" alt="<?= $this->translate('GEWIS Logo') ?>">
+                </a>
+            </td>
         </tr>
+
         <tr>
             <td valign=top width="200">
                 <?= $this->partial('partial/fancy-nav.phtml') ?>
             </td>
-            <td valign=top>
+            <td valign=top colspan=2>
                 <div class="content-container">
                     <?php $viewModel = current($this->viewModel()->getCurrent()->getChildren());
                         if(strstr($viewModel->getTemplate(), 'admin')) {
@@ -57,8 +63,9 @@
                 </div>
             </td>
         </tr>
+
         <tr>
-            <td colspan=2>
+            <td colspan=3>
                 <?= $this->partial('partial/footer.phtml') ?>
 
                 <?= $this->inlineScript() ?>
