@@ -29,9 +29,23 @@
     <table border="0">
         <tr>
             <td>
+            <a href="<?= $this->url('home') ?>">
+                <img src="<?= $this->basePath() ?>/img/anilogo.gif" alt="<?= $this->translate('GEWIS Logo') ?>">
+            </a>
+            </td>
+            <td>
+<center>
+<font size="+3"><?= $this->translate('Studievereniging') ?></font>
+    <br>
+    <font size="+5" color="#FF0000">GEWIS</font>
+</center>
+            </td>
+        </tr>
+        <tr>
+            <td>
                 <?= $this->partial('partial/fancy-nav.phtml') ?>
             </td>
-            <td width="80%">
+            <td width="78%">
                 <div class="content-container">
                     <?php $viewModel = current($this->viewModel()->getCurrent()->getChildren());
                         if(strstr($viewModel->getTemplate(), 'admin')) {

@@ -1,91 +1,69 @@
-<div class="jumbotron" style="background-image: url(<?= $this->basePath() ?>/img/panorama.jpg);">
-    <div class="container">
-        <h1><?= $this->translate('Studievereniging GEWIS') ?></h1>
-        <h2><?= $this->translate('Welkom op de website van Studievereniging GEWIS.') ?></h2>
+<div class="row">
+    <h1>Welkom</h1>
+
+    <p>
+        <?= $this->translate('Welcome to the website of Study association GEWIS, the study association of
+        the department of Mathematics & Computer Science of the Eindhoven University of Technology.') ?>
+    </p>
+    <p>
+        <?= sprintf($this->translate('GEWIS means Community of Mathematics and Computer Science Students
+            (or in Dutch: GEmeenschap van Wiskunde en Informatica Studenten) and was founded in 1982.
+            On this website you can find out %s and %s.'),
+                '<a href="' . $this->url('home/page',
+                    ['category' => 'vereniging']) . '">' . $this->translate('who we are') . '</a>',
+                '<a href="' . $this->url('activity') . '">' . $this->translate('what we do') . '</a>')
+        ?>
+    </p>
+
+    <h3><?= $this->translate('Agenda') ?></h3>
+    <div class="list-group">
+        <?php foreach ($activities as $activity): ?>
+            <a class="list-group-item agenda-item"
+               href="<?= $this->url('activity/view', ['id' => $activity->getId()]) ?>">
+            <span class="badge">
+                <span class="text-lowercase small"><?= $activity->getBeginTime()->format('M') ?>
+                    &nbsp;</span>
+                <span><?= $activity->getBeginTime()->format('d') ?></span>
+            </span>
+
+                <?= $activity->getName(); ?>
+
+            </a>
+        <?php endforeach; ?>
     </div>
+
+    <p>
+        <?= sprintf(
+            $this->translate('Donderdags is er %sborrel%s van 16.30 tot 19.00 uur.'),
+            '<a href="~bac">',
+            '</a>'
+        )
+        ?>
+    </p>
+
+    <div class="col-xs-8">
+        <a href="<?= $this->url('activity') ?>">
+            <?= $this->translate('Complete agenda') ?>
+            <span class="glyphicon glyphicon-arrow-right"></span>
+        </a>
+    </div>
+    <div class="col-xs-4">
+        <a href="https://www.google.com/calendar/embed?src=v23gq10ij44fhdsfdof1s613ak%40group.calendar.google.com&gsessionid=OK"
+           title="<?= $this->translate('Google Calendar') ?>">
+            <span class="glyphicon glyphicon-calendar"></span>&nbsp;iCal
+        </a>
+    </div>
+
 </div>
 
-<section class="section">
-    <div class="container">
-        <div class="row">
-            <div class="col-sm-7 col-md-8">
-                <h1><?= $this->translate('Study association GEWIS') ?></h1>
-                <p class="lead">
-                    <?= $this->translate('Welcome to the website of Study association GEWIS, the study association of
-                    the department of Mathematics & Computer Science of the Eindhoven University of Technology.') ?>
-                </p>
-                <p>
-                    <?= sprintf($this->translate('GEWIS means Community of Mathematics and Computer Science Students
-                    (or in Dutch: GEmeenschap van Wiskunde en Informatica Studenten) and was founded in 1982.
-                    On this website you can find out %s and %s.'),
-                        '<a href="' . $this->url('home/page',
-                            ['category' => 'vereniging']) . '">' . $this->translate('who we are') . '</a>',
-                        '<a href="' . $this->url('activity') . '">' . $this->translate('what we do') . '</a>')
-                    ?>
-                </p>
-            </div>
-            <div class="col-sm-5 col-md-4">
-                <div class="panel panel-default agenda">
-                    <div class="panel-heading">
-                        <h3><?= $this->translate('Agenda') ?></h3>
-                    </div>
-                    <div class="panel-body">
-                        <div class="list-group">
-                            <?php foreach ($activities as $activity): ?>
-                                <a class="list-group-item agenda-item"
-                                   href="<?= $this->url('activity/view', ['id' => $activity->getId()]) ?>">
-                                <span class="badge">
-                                    <span class="text-lowercase small"><?= $activity->getBeginTime()->format('M') ?>
-                                        &nbsp;</span>
-                                    <span><?= $activity->getBeginTime()->format('d') ?></span>
-                                </span>
-
-                                    <?= $activity->getName(); ?>
-
-                                </a>
-                            <?php endforeach; ?>
-                        </div>
-
-                        <p>
-                            <?= sprintf(
-                                $this->translate('Donderdags is er %sborrel%s van 16.30 tot 19.00 uur.'),
-                                '<a href="~bac">',
-                                '</a>'
-                            )
-                            ?>
-                        </p>
-                    </div>
-                    <div class="panel-footer">
-                        <div class="row">
-                            <div class="col-xs-8">
-                                <a href="<?= $this->url('activity') ?>">
-                                    <?= $this->translate('Complete agenda') ?>
-                                    <span class="glyphicon glyphicon-arrow-right"></span>
-                                </a>
-                            </div>
-                            <div class="col-xs-4 text-right">
-                                <a href="https://www.google.com/calendar/embed?src=v23gq10ij44fhdsfdof1s613ak%40group.calendar.google.com&gsessionid=OK"
-                                   title="<?= $this->translate('Google Calendar') ?>">
-                                    <span class="glyphicon glyphicon-calendar"></span>&nbsp;iCal
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    </div>
-</section>
-<section class="section alt">
-    <div class="container panel-group panel-group-horizontal">
-        <div class="panel panel-emphasize">
+    <div class="panel-group panel-group-horizontal">
+        <div class="panel">
             <div class="panel-heading">
                 <h3><?= $this->translate('News') ?></h3>
             </div>
         </div>
         <?php foreach ($news as $item): ?>
-            <div class="panel panel-emphasize">
+            <div class="panel">
                 <div class="panel-heading">
                     <h4>
                         <?php
@@ -113,9 +91,6 @@
             </div>
         <?php endforeach; ?>
     </div>
-</section>
-<section class="section">
-    <div class="container">
         <div class="row">
             <div class="col-md-6">
                 <div class="panel panel-default">
@@ -192,5 +167,3 @@
                 </div>
             </div>
         </div>
-    </div>
-</section>
