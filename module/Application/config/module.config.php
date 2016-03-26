@@ -63,7 +63,7 @@ return [
         'not_found_template'       => (APP_ENV === 'production' ? 'error/404' : 'error/debug/404'),
         'exception_template'       => (APP_ENV === 'production' ? 'error/500' : 'error/debug/500'),
         'template_map' => [
-            'layout/layout'           => __DIR__ . '/../view/layout/layout.phtml',
+            'layout/layout'           => __DIR__ . '/../view/layout/fancy.phtml',
             'application/index/index' => __DIR__ . '/../view/application/index/index.phtml',
             'error/404'               => __DIR__ . '/../view/error/404.phtml',
             'error/403'               => __DIR__ . '/../view/error/403.phtml',
