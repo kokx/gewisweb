@@ -12,7 +12,6 @@
 
         <!-- Le styles -->
         <?= $this->headLink(['rel' => 'shortcut icon', 'type' => 'image/vnd.microsoft.icon', 'href' => $this->basePath() . '/img/favicon.ico'])
-                        ->prependStylesheet('https://fonts.googleapis.com/css?family=Raleway:700,400,300')
                         ->prependStylesheet($this->basePath() . '/css/gewis-theme.css') ?>
 
         <!-- Scripts -->
@@ -26,25 +25,36 @@
 
     </head>
     <body>
-        <?= $this->partial('partial/fancy-nav.phtml') ?>
 
-        <div class="content-container">
-            <?php $viewModel = current($this->viewModel()->getCurrent()->getChildren());
-                if(strstr($viewModel->getTemplate(), 'admin')) {
-                    echo $this->partial('partial/admin-nav.phtml', ['content' => $this->content]);
-                } else {
-                    echo $this->content;
-                }
-             ?>
-        </div>
+    <table border="0">
+        <tr>
+            <td>
+                <?= $this->partial('partial/fancy-nav.phtml') ?>
+            </td>
+            <td width="80%">
+                <div class="content-container">
+                    <?php $viewModel = current($this->viewModel()->getCurrent()->getChildren());
+                        if(strstr($viewModel->getTemplate(), 'admin')) {
+                            echo $this->partial('partial/admin-nav.phtml', ['content' => $this->content]);
+                        } else {
+                            echo $this->content;
+                        }
+                     ?>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td colspan=2>
+                <?= $this->partial('partial/footer.phtml') ?>
 
-        <?= $this->partial('partial/footer.phtml') ?>
-
-        <?= $this->inlineScript() ?>
-        <script>
-            <?php foreach($this->scriptUrl()->getUrls() as $name => $url): ?>
-            URLHelper.addUrl('<?= $name ?>', '<?= urldecode($url) ?>');
-            <?php endforeach; ?>
-        </script>
+                <?= $this->inlineScript() ?>
+                <script>
+                    <?php foreach($this->scriptUrl()->getUrls() as $name => $url): ?>
+                    URLHelper.addUrl('<?= $name ?>', '<?= urldecode($url) ?>');
+                    <?php endforeach; ?>
+                </script>
+            </td>
+        </tr>
+    </table>
     </body>
 </html>
