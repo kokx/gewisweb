@@ -35,4 +35,21 @@ class IndexController extends AbstractActionController
         return $this->redirect()->toRoute('home');
 
     }
+
+    public function themeAction()
+    {
+        $session = new SessionContainer('theme');
+        $session->theme = $this->params()->fromRoute('theme');
+
+        if ($session->theme != 'new' && $session->theme != 'old') {
+            $session->lang = 'old';
+        }
+
+        if (isset($_SERVER['HTTP_REFERER'])) {
+            return $this->redirect()->toUrl($_SERVER['HTTP_REFERER']);
+        }
+
+        return $this->redirect()->toRoute('home');
+
+    }
 }

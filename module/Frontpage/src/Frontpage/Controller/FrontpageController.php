@@ -11,7 +11,13 @@ class FrontpageController extends AbstractActionController
     public function homeAction()
     {
         $homePageData = $this->getFrontpageService()->getHomepageData();
-        return new ViewModel($homePageData);
+        $session = new SessionContainer('theme');
+
+        $view = new ViewModel($homePageData);
+        if (!isset($session->theme) || $session->theme == 'new') {
+            $view->setTemplate('frontpage/fancy-home');
+        }
+        return $view;
     }
 
     /**

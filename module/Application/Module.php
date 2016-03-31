@@ -26,6 +26,10 @@ class Module
         $translator->setlocale($this->determineLocale($e));
 
         // enable Zend\Validate default translator
+        $session = new SessionContainer('theme');
+        if (!isset($session->theme) || $session->theme == 'new') {
+            $e->getViewModel()->setTemplate('layout/fancy');
+        }
         AbstractValidator::setDefaultTranslator($translator, 'validate');
     }
 
@@ -39,6 +43,7 @@ class Module
 
         return $session->lang;
     }
+
 
     public function getConfig()
     {

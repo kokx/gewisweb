@@ -98,6 +98,16 @@ $lang = $this->plugin('translate')->getTranslator()->getLocale();
 
     <tr>
         <td style="border: 1px solid black; padding: 4px; background-color: rgb(255,255,204);">
+            <div class="dropdown dropdown-hover">
+                <a href="<?= $this->url('theme', ['theme' => 'old']) ?>">
+                    <?= $this->translate('Old site') ?>
+                </a>
+            </div>
+        </td>
+    </tr>
+
+    <tr>
+        <td style="border: 1px solid black; padding: 4px; background-color: rgb(255,255,204);">
             <a href="<?= $this->url('lang', ['lang' => 'en']) ?>">
                 <span class="flag-icon flag-icon-en" style="background-image: url('<?= $this->basePath() ?>/img/en.svg');"></span> English
             </a>
